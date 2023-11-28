@@ -3,6 +3,7 @@ import "./ListCard.css"
 import React, {useEffect, useState} from "react"
 
 const ListCard = (props) => {
+
     const [data, setData] = useState(props.data);
 
     useEffect( () => {
@@ -11,24 +12,28 @@ const ListCard = (props) => {
 
     const buttonClickHandler = (event) =>{
         let x = Number(event.target.id);
+        console.log(x);
         
         
         setData( (prev) => {
-            let tableIs = ""
+            let categoryIs = ""
             let modifiedData = prev.filter( (val) => {
-                if(Number(val.uniqueId) === x){
-                    tableIs = val.tableNo;
+                if(Number(val.id) === x){
+                    categoryIs = val.category;
                 }
-                return Number(val.uniqueId) !== x;
+                return Number(val.id) !== x;
             });
-            if(tableIs === "Table 1"){
-                localStorage.setItem("tableOneData", JSON.stringify(modifiedData));
+            console.log(data);
+            console.log(modifiedData);
+            console.log(categoryIs);
+            if(categoryIs === "Electronics"){
+                localStorage.setItem("electronicProductData", JSON.stringify(modifiedData));
             }
-            else if(tableIs === "Table 2"){
-                localStorage.setItem("tableTwoData", JSON.stringify(modifiedData))
+            else if(categoryIs === "Food"){
+                localStorage.setItem("foodProductData", JSON.stringify(modifiedData))
             }
-            else if(tableIs === "Table 3"){
-                localStorage.setItem("tableThreeData", JSON.stringify(modifiedData))
+            else if(categoryIs === "Skincare"){
+                localStorage.setItem("skincareProductData", JSON.stringify(modifiedData))
             }
             return modifiedData;
         })
@@ -41,26 +46,26 @@ const ListCard = (props) => {
         <table>
             <thead>
             <tr>
-                <th className="thDiv">UniqueID</th>
+                <th className="thDiv">ProductID</th>
                 <th className="thDiv">Item Name</th>
-                <th className="thDiv">Amount</th>
+                <th className="thDiv">Selling Price</th>
             </tr>
             </thead>
             <tbody>
                 { (data) ? data.map( (value) => {
-                    totalAmount += value.orderPrice;
-                    return <tr key={value.uniqueId}>
+                    totalAmount += value.sellingPrice;
+                    return <tr key={value.id}>
                     <td className="uniqueIdDiv tdDiv">{value.uniqueId}</td>
-                    <td className="dishNameDiv tdDiv">{value.dishname}</td>
-                    <td className="orderPriceDiv tdDiv">{value.orderPrice}</td>
-                    <td><button id={value.uniqueId} onClick={ buttonClickHandler} className="deleteButton">Delete</button></td>
+                    <td className="dishNameDiv tdDiv">{value.productName}</td>
+                    <td className="orderPriceDiv tdDiv">{value.sellingPrice}</td>
+                    <td><button id={value.id} onClick={ buttonClickHandler} className="deleteButton">Delete Item</button></td>
                 </tr>
                 }): <tr></tr> }
             </tbody>
             <tfoot>
-                <tr><td></td>
-                    <td className="totalBill">Total Bill:-{totalAmount}</td>
-                    <td></td>
+                <tr>
+                    <td colSpan="3"className="totalBill">Total Category Price:-{totalAmount}</td>
+                    
                 </tr>
             </tfoot>
         </table>

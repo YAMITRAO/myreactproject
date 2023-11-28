@@ -1,6 +1,5 @@
 
-.tableOneContainer{
-   
+.electronicContainer{
     width: 100%;
     margin: 0px 5px ;
     border-radius: 10px;
@@ -10,6 +9,6 @@
     text-align: center;
     display: flex;
     justify-content: center;
-
+    font-weight: bold;
 }
 

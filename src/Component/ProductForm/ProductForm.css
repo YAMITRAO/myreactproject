@@ -7,7 +7,7 @@
 
 }
 
-.orderFormContainer{
+.productFormContainer{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -19,7 +19,7 @@
    padding:15px;
 }
 
-.orderFormContainer > .common > input,label,select{
+.productFormContainer > .common > input,label,select{
 
     border-radius: 10px;
     border: none;

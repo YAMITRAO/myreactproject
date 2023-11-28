@@ -1,24 +1,25 @@
 
-import OrderForm from "./OrderForm/OrderForm";
-import Table from "./TableList/Table";
+import ProductForm from "./ProductForm/ProductForm";
+import Products from "./ProductList/Products";
 import React ,{ useState} from "react";
 
 
 const Project = () => {
   
-    const [dataToTable, setDataToTable] = useState( {});
+    const [productData, setProductData] = useState( {});
   
 
     function dataFromFormHandler(importedData){
-        setDataToTable(importedData)      
+        // console.log(importedData)
+        setProductData(importedData)      
     }
   
     
 
     return(
         <>
-        <OrderForm onImportData = { dataFromFormHandler } />
-        <Table tableData = {dataToTable} />
+        <ProductForm onImportData = { dataFromFormHandler } />
+        <Products productData = {productData} />
         </>
     )
 }

@@ -1,12 +1,13 @@
-.tableThreeContainer{
+.foodContainer{
    
     width: 100%;
     margin: 0px 5px;
     border-radius: 10px;
-    background-color: rgba(29, 125, 165, 0.4);
+    background-color: rgba(81, 42, 85, 0.3);
     text-align: center;
     display: flex;
     justify-content: center;
     padding:10px;
     box-sizing: border-box;
+    font-weight: bold;
 }
