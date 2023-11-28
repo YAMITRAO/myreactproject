@@ -1,0 +1,15 @@
+
+.tableOneContainer{
+   
+    width: 100%;
+    margin: 0px 5px ;
+    border-radius: 10px;
+    padding:10px;
+    box-sizing: border-box;
+    background-color: rgba(88, 105, 50, 0.3);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+}
+
