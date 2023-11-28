@@ -1,5 +1,5 @@
 import "./ProductForm.css"
-import React, {useRef, useState} from "react";
+import React, {useRef} from "react";
 
 
 const ProductForm = (props) => {
@@ -9,7 +9,7 @@ const ProductForm = (props) => {
     const selectedCategory = useRef();
     const enteredProductId = useRef();
 
-    const [isValid, setIsValid] = useState(true);
+    
     
     
     const formSubmitHandler = (e) =>{
@@ -72,7 +72,7 @@ const ProductForm = (props) => {
 
     return(
         <>
-        {isValid ? formVariable : <div>None</div>}
+        {formVariable}
             </>
             
         
