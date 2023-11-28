@@ -16,7 +16,7 @@ const OrderForm = (props) => {
             tableNo:selectedTableNo.current.value,
             dishname:enteredDishName.current.value,
           orderPrice: Number(enteredOrderPrice.current.value),
-          uniqueId: (Math.random()*20+Math.random()*3).toFixed(3)
+          uniqueId: (((Math.random()*20+Math.random()*3).toFixed(3))*10000)
         }
         
         
@@ -31,12 +31,8 @@ const OrderForm = (props) => {
     return(
         
             <form onSubmit={formSubmitHandler}>
+                <div className="headingContainer"> Order Summary</div>
                 <div className="orderFormContainer">
-
-                {/* <div className="uniqueIdContainer common">
-                    <label>Unique Order ID:</label>
-                    <input type="number" min="1" />
-                </div> */}
 
                 <div className="orderPriceContainer common">
                     <label>Order Price</label>

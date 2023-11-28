@@ -9,3 +9,40 @@
    border-radius: 10px;
    
 }
+
+.totalBill{
+    background-color: rgba(12, 100, 162, 0.4);
+    padding:3px 5px;
+    border-radius: 8px;
+
+}
+
+.deleteButton{
+    border-radius: 10px;
+    border: none;
+    padding: 4px 6px;
+    margin-top: 2px;
+    background-color: rgba(159, 36, 32, 0.7);
+    color:white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.deleteButton:hover{
+    background-color: rgba(159, 36, 32, 0.9);
+    scale: 1.02;
+}
+
+.thDiv{
+    background-color: rgba(9, 5, 5, 0.2);
+    border-radius: 5px;
+    padding: 3px 6px;
+    font-weight: normal;
+    color:white;
+
+}
+
+.tdDiv{
+    background-color: rgba(189, 72, 68, 0.2);
+    border-radius: 5px;
+}

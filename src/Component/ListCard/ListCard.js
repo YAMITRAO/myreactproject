@@ -11,7 +11,7 @@ const ListCard = (props) => {
 
     const buttonClickHandler = (event) =>{
         let x = Number(event.target.id);
-        console.log(x);
+        
         
         setData( (prev) => {
             let tableIs = ""
@@ -34,28 +34,35 @@ const ListCard = (props) => {
         })
     }   
 
+    let totalAmount = 0 ;
 
     return(
     <div className="listContainer">
         <table>
             <thead>
             <tr>
-                <th>UniqueID</th>
-                <th>Name</th>
-                <th>Amount</th>
+                <th className="thDiv">UniqueID</th>
+                <th className="thDiv">Item Name</th>
+                <th className="thDiv">Amount</th>
             </tr>
             </thead>
             <tbody>
                 { data.map( (value) => {
+                    totalAmount += value.orderPrice;
                     return <tr key={value.uniqueId}>
-                    <td>{value.uniqueId}</td>
-                    <td>{value.dishname}</td>
-                    <td>{value.orderPrice}</td>
-                    <td><button id={value.uniqueId} onClick={ buttonClickHandler}>Delete</button></td>
+                    <td className="uniqueIdDiv tdDiv">{value.uniqueId}</td>
+                    <td className="dishNameDiv tdDiv">{value.dishname}</td>
+                    <td className="orderPriceDiv tdDiv">{value.orderPrice}</td>
+                    <td><button id={value.uniqueId} onClick={ buttonClickHandler} className="deleteButton">Delete</button></td>
                 </tr>
                 })  }
-            
             </tbody>
+            <tfoot>
+                <tr><td></td>
+                    <td className="totalBill">Total Bill:-{totalAmount}</td>
+                    <td></td>
+                </tr>
+            </tfoot>
         </table>
     </div>
     );
