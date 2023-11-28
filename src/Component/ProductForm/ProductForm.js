@@ -12,6 +12,13 @@ const ProductForm = (props) => {
 
     const [isValid, setIsValid] = useState(true);
 
+    let checkData = [...JSON.parse(localStorage.getItem("electronicProductData")), ...JSON.parse(localStorage.getItem("foodProductData")), ...JSON.parse(localStorage.getItem("skincareProductData"))];
+
+    console.log(checkData);
+
+    const [errormsg, setErrorMsg] =useState("Please Enter Valid Inputs")
+
+
     function Errorhandler(){
         setIsValid(true);
     }
@@ -19,9 +26,18 @@ const ProductForm = (props) => {
     
     const formSubmitHandler = (e) =>{
 
+        
+        
+        checkData.forEach( (val) => {
+           if( enteredProductId.current.value === val.uniqueId){
+            setIsValid(false);
+            setErrorMsg("Product Id can't be same")
+           };
+        })
+
         e.preventDefault();
         
-        if(enteredProductName.current.value.length >0 && enteredSellingPrice.current.value.length > 0 && enteredProductId.current.value.length > 0 ){
+        if(enteredProductName.current.value.length >0 && enteredSellingPrice.current.value.length > 0 && enteredProductId.current.value.length > 0 && (selectedCategory.current.value === "Electronics" || selectedCategory.current.value === "Food" || selectedCategory.current.value === "Skincare") ){
         let temp ={
             id: (Math.random()*10 + Math.random()*20).toFixed(3),
             category:selectedCategory.current.value,
@@ -79,7 +95,7 @@ const ProductForm = (props) => {
 
     return(
         <>
-        {isValid ? formVariable : <><Overlay setForm={Errorhandler}/> {formVariable} </>}
+        {isValid ? formVariable : <><Overlay setForm={Errorhandler} errormsg={errormsg}/> {formVariable} </>}
             </>
             
         

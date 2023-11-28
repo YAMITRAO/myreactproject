@@ -8,7 +8,7 @@ const Overlay = (props) => {
                 Error:- Invalid Input
             </div>
             <div className="subContainer">
-                Please Enter Valid Input
+               {props.errormsg}
                 
             </div>
             <div className="bottomContainer">
