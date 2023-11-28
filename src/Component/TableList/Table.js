@@ -6,31 +6,52 @@ import "./Table.css"
 
 
 
+
 const Table = (props) => {
-    console.log(props.tableData);
-    const tableOneArray = props.tableData.filter( (item) =>{
-        return item.tableNo === "Table 1"
-    });
 
-    const tableTwoArray = props.tableData.filter( (item) =>{
-        return item.tableNo === "Table 2"
-    });
+        if(props.tableData.tableNo === "Table 1"){
+            let dataTableOne = [props.tableData];
+        
+            if(localStorage.getItem("tableOneData")){
+                dataTableOne = [props.tableData, ...JSON.parse(localStorage.getItem("tableOneData"))];
+                localStorage.setItem("tableOneData", JSON.stringify(dataTableOne));
+            }
+            else{
+                localStorage.setItem("tableOneData", JSON.stringify(dataTableOne));
+            }
+            
+        }
+        else if(props.tableData.tableNo === "Table 2"){
+            let dataTableTwo = [props.tableData];
+            
+            if(localStorage.getItem("tableTwoData")){
+                dataTableTwo = [props.tableData, ...JSON.parse(localStorage.getItem("tableTwoData"))];
+                localStorage.setItem("tableTwoData", JSON.stringify(dataTableTwo));
+            }
+            else{
+                localStorage.setItem("tableTwoData", JSON.stringify(dataTableTwo));
+            }
+        }
+        else if(props.tableData.tableNo === "Table 3"){
 
-    const tableThreeArray = props.tableData.filter( (item) =>{
-        return item.tableNo === "Table 3"
-    });
-
-    // console.log(tableOneArray);
-    // console.log(tableTwoArray);
-    // console.log(tableThreeArray);
-
+            let dataTableThree = [props.tableData];
+            
+            if(localStorage.getItem("tableThreeData")){
+                dataTableThree = [props.tableData, ...JSON.parse(localStorage.getItem("tableThreeData"))];
+                localStorage.setItem("tableThreeData", JSON.stringify(dataTableThree));
+            }
+            else{
+                localStorage.setItem("tableThreeData", JSON.stringify(dataTableThree));
+            }
+            
+        }
 
     return(
         <div className="tableContainer">
         
-            <TableOne tableOneData={tableOneArray}/>
-            <TableTwo  tableTwoData={tableTwoArray}/>
-            <TableThree tableThreeData={tableThreeArray}/>
+            <TableOne tableOneData={JSON.parse(localStorage.getItem("tableOneData"))}/>
+            <TableTwo  tableTwoData={JSON.parse(localStorage.getItem("tableTwoData"))}/>
+            <TableThree tableThreeData={JSON.parse(localStorage.getItem("tableThreeData"))}/>
       
         </div>
     )

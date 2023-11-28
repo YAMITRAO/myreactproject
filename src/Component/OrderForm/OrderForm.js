@@ -25,7 +25,7 @@ const OrderForm = (props) => {
 
         enteredDishName.current.value="";
         enteredOrderPrice.current.value="";
-        selectedTableNo.current.value="Select Table";
+        selectedTableNo.current.value="";
     }
 
     return(

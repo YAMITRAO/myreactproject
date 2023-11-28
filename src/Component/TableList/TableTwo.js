@@ -4,7 +4,6 @@ import ListCard from "../ListCard/ListCard";
 
 
 const TableTwo = (props) =>{
-    console.log(props.tableTwoData)
 
     return( 
         <div className="tableTwoContainer">

@@ -1,3 +1,4 @@
+
 import ListCard from "../ListCard/ListCard";
 import "./TableOne.css"
 
@@ -7,7 +8,7 @@ const TableOne = (props) =>{
         <div className="tableOneContainer">
             <div>Table1
                 
-            <ListCard data={props.tableOneData}/>
+            <ListCard data={ props.tableOneData}/>
             
             </div>
             
