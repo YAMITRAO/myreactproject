@@ -16,7 +16,7 @@ const OrderForm = (props) => {
             tableNo:selectedTableNo.current.value,
             dishname:enteredDishName.current.value,
           orderPrice: Number(enteredOrderPrice.current.value),
-          uniqueId: (((Math.random()*20+Math.random()*3).toFixed(3))*10000)
+          uniqueId: (((Math.random()*10 + Math.random()*20).toFixed(3))*1000)
         }
         
         

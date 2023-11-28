@@ -47,7 +47,7 @@ const ListCard = (props) => {
             </tr>
             </thead>
             <tbody>
-                { data.map( (value) => {
+                { (data) ? data.map( (value) => {
                     totalAmount += value.orderPrice;
                     return <tr key={value.uniqueId}>
                     <td className="uniqueIdDiv tdDiv">{value.uniqueId}</td>
@@ -55,7 +55,7 @@ const ListCard = (props) => {
                     <td className="orderPriceDiv tdDiv">{value.orderPrice}</td>
                     <td><button id={value.uniqueId} onClick={ buttonClickHandler} className="deleteButton">Delete</button></td>
                 </tr>
-                })  }
+                }): <tr></tr> }
             </tbody>
             <tfoot>
                 <tr><td></td>
