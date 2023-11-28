@@ -1,5 +1,6 @@
+import Overlay from "../Overlay/Overlay";
 import "./ProductForm.css"
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 
 
 const ProductForm = (props) => {
@@ -9,7 +10,11 @@ const ProductForm = (props) => {
     const selectedCategory = useRef();
     const enteredProductId = useRef();
 
-    
+    const [isValid, setIsValid] = useState(true);
+
+    function Errorhandler(){
+        setIsValid(true);
+    }
     
     
     const formSubmitHandler = (e) =>{
@@ -24,10 +29,12 @@ const ProductForm = (props) => {
           sellingPrice: Number(enteredSellingPrice.current.value),
           uniqueId: enteredProductId.current.value
         }
-        
-        
         props.onImportData(temp);
-    }
+             }
+             else{
+                setIsValid(false);
+
+             }
 
         enteredProductName.current.value="";
         enteredSellingPrice.current.value="";
@@ -72,7 +79,7 @@ const ProductForm = (props) => {
 
     return(
         <>
-        {formVariable}
+        {isValid ? formVariable : <><Overlay setForm={Errorhandler}/> {formVariable} </>}
             </>
             
         
